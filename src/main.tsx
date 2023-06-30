@@ -2,14 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
-import App from './App.tsx'
+import { RouterProvider } from 'react-router-dom'
+import routes from './router/index'
 import 'uno.css'
 import '@peeeng/css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ConfigProvider locale={zhCN}>
-      <App />
+    <RouterProvider router={routes} />
       </ConfigProvider>
   </React.StrictMode>,
 )
