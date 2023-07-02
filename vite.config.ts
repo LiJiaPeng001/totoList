@@ -13,5 +13,6 @@ export default defineConfig({
   plugins: [Unocss(), react()],
   server: {
     port: 2333,
+    host: true,
   },
 })
