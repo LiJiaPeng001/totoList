@@ -1,6 +1,4 @@
 {
-  // Visuals
-  "workbench.activityBar.visible": true,
   "workbench.colorTheme": "Vitesse Dark",
   "workbench.editor.tabCloseButton": "right",
   "workbench.iconTheme": "file-icons",
