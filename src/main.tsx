@@ -10,6 +10,7 @@ import store from './store/app'
 
 import 'dayjs/locale/zh-cn'
 import '@peeeng/css/common/index.css'
+import './style/index.less'
 
 dayjs.locale('zh-cn')
 
