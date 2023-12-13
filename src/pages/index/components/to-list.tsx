@@ -21,19 +21,20 @@ function getListData(value: Dayjs, list: PayloadOption[]): PayloadOption[] {
   return list.filter((it) => it.date == value.format("YYYY-MM-DD"));
 }
 
-function getMonthData(value: Dayjs) {
-  if (value.month() === 8) return 1394;
-}
 const ToList: React.FC<Props> = (props) => {
   let { list = [] } = props;
   const monthCellRender = (value: Dayjs) => {
-    const num = getMonthData(value);
-    return num ? (
+    let newList = list.filter((it) => (it.date as string).indexOf(value.format("YYYY-MM")) > -1)
+    let noNum = newList.filter((it) => it.status == 1).length;
+    let yesNum = newList.filter((it) => it.status == 2).length;
+    let removeNum = newList.filter((it) => it.status == 3).length;
+    return newList.length ? (
       <div className="notes-month">
-        <section>{num}</section>
-        <span>Backlog number</span>
+        <section>未完成：{noNum}</section>
+        <section>已完成：{yesNum}</section>
+        <section>已删除：{removeNum}</section>
       </div>
-    ) : null;
+    ) : null
   };
 
   const dateCellRender = (value: Dayjs) => {
