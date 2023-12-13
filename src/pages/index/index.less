@@ -7,8 +7,28 @@
 .head-page{
   justify-content: flex-end;
 }
+.no-box{
+  margin-bottom: 20px;
+}
 .right-content{
   margin-left: 30px;
   flex-shrink: 0;
   min-width: 400px;
+  .title{
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .take-item{
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    &:nth-last-child(1){
+      padding-bottom: 0;
+      border: none;
+    }
+    .remark{
+      color: #999;
+      font-size: 12px;
+    }
+  }
 }

@@ -1,8 +1,12 @@
-import { createAuthority } from '@peeeng/utils/authority'
+import { PayloadOption } from '~/pages/index/types'
+import {useLocalStorageState} from 'ahooks'
 
-const maxAge = 1000 * 60 * 60 * 24 * 700000
 
-export const useTake = createAuthority({
-  localKey: 'peeeng-takes',
-  maxAge,
-})
+const [auth, setAuth] = useLocalStorageState<PayloadOption[]>(
+  'peeeng-take',
+  {
+    defaultValue:[]
+  }
+)
+
+export {auth,setAuth}
