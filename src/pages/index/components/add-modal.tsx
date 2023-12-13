@@ -7,18 +7,19 @@ interface Props {
   visible: boolean
   payload: PayloadOption
   onClose: () => void
+  onSubmit: (e: PayloadOption) => void
 }
 
 function handleCancel(props: Props) {
   props.onClose()
 }
 
-function onFinish(values: any) {
-  console.log('Success:', values)
-}
-
 const AddModal: React.FC<Props> = (props: Props) => {
   const { visible, payload } = props
+  function onFinish(values: PayloadOption) {
+    props.onSubmit({ ...props.payload, ...values })
+    props.onClose()
+  }
   return <>
     <Modal title="日程" open={visible} footer={null}>
     <Form

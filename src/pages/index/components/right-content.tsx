@@ -1,9 +1,11 @@
 import React from 'react'
 import { Card } from 'antd'
 import { PlusCircleFilled } from '@ant-design/icons'
+import type { PayloadOption } from '../types'
 
 interface Props {
   date: string
+  takeData: PayloadOption[]
 }
 
 function addModal(props: Props) {
