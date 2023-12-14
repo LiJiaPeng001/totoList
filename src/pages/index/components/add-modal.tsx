@@ -64,7 +64,7 @@ const AddModal: React.FC<Props> = (props: Props) => {
             />
           </Form.Item>
 
-          {payload.id && (
+          {payload.id ? (
             <Form.Item<PayloadOption> label="状态" name="status">
               <Select
                 placeholder="请选择状态"
@@ -72,7 +72,7 @@ const AddModal: React.FC<Props> = (props: Props) => {
                 options={statusMaps}
               />
             </Form.Item>
-          )}
+          ) : null}
 
           <Form.Item<PayloadOption> label="备注" name="remark">
             <Input.TextArea rows={4} placeholder="请输入备注" />
