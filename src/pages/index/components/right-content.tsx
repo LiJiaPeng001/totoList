@@ -51,7 +51,9 @@ const RightList: React.FC<Props> = (props: Props) => {
               <div className="take-item middle-flex" key={i}>
                 <div className="l-text flex1">
                   <div className="text">{item.name}</div>
-                  <div className="remark">备注：{item.remark}</div>
+                  {item.remark ? (
+                    <div className="remark">备注：{item.remark}</div>
+                  ) : null}
                 </div>
                 <div className="r-icon">
                   <EditOutlined
