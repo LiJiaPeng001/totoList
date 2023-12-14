@@ -15,6 +15,7 @@ const badgeMaps: { [K in StatusMaps]: BadgeProps["status"] } = {
   1: "warning",
   2: "success",
   3: "error",
+  4: "success",
 };
 
 function getListData(value: Dayjs, list: PayloadOption[]): PayloadOption[] {
@@ -31,12 +32,15 @@ const ToList: React.FC<Props> = (props) => {
     );
     let noNum = newList.filter((it) => it.status == 1).length;
     let yesNum = newList.filter((it) => it.status == 2).length;
-    let removeNum = newList.filter((it) => it.status == 3).length;
+    let ingNum = newList.filter((it) => it.status == 4).length;
+    // 完成率
+    let rate = Math.floor(yesNum / newList.length * 100) + '%';
     return newList.length ? (
       <div className="notes-month">
-        <section>未完成：{noNum}</section>
-        <section>已完成：{yesNum}</section>
-        <section>已删除：{removeNum}</section>
+        <div>总任务数：{newList.length}<span style={{marginLeft:'12px'}}>完成率：{rate}</span></div>
+        <Badge status='error' text={`未完成：${noNum}`} /><br />
+        <Badge status='processing' text={`进行中：${ingNum}`} /><br />
+        <Badge status='success' text={`已完成：${yesNum}`} />
       </div>
     ) : null;
   };
@@ -58,7 +62,10 @@ const ToList: React.FC<Props> = (props) => {
     if (info.type === "month") return monthCellRender(current);
     return info.originNode;
   };
-  function onSelect(date: Dayjs, info: { source: 'year' | 'month' | 'date' | 'customize' }) {
+  function onSelect(
+    date: Dayjs,
+    info: { source: "year" | "month" | "date" | "customize" }
+  ) {
     if (info.source === "date") props.select(dayjs(date).format("YYYY-MM-DD"));
   }
   return <Calendar onSelect={onSelect} cellRender={cellRender} />;

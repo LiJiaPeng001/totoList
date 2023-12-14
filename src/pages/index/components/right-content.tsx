@@ -42,7 +42,7 @@ const RightList: React.FC<Props> = (props: Props) => {
             }
           >
             <div className="title middle-flex">
-              <span>进行中 Fighting</span>
+              <span>待完成 Fighting</span>
               <img src="" alt="" className="icon" />
             </div>
             {/* 添加 */}
