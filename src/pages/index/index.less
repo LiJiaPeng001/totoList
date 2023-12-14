@@ -1,35 +1,48 @@
-.index-page{
+@import "~/style/test.less";
+
+.index-page {
   position: relative;
   padding: 20px;
   height: 100vh;
   overflow: hidden;
 }
-.head-page{
+.head-page {
   justify-content: flex-end;
 }
-.no-box{
+.no-box {
   margin-bottom: 20px;
 }
-.right-content{
+.right-content {
   margin-left: 30px;
   flex-shrink: 0;
   min-width: 400px;
   width: 32%;
-  .title{
+  .title {
     margin-bottom: 12px;
     font-size: 16px;
     font-weight: 600;
   }
-  .take-item{
+  .take-item {
     border-bottom: 1px solid #eee;
     padding: 10px 0;
-    &:nth-last-child(1){
+    &:nth-last-child(1) {
       padding-bottom: 0;
       border: none;
     }
-    .remark{
+    .l-text {
+      overflow: hidden;
+      .text {
+        .ellipsis();
+      }
+    }
+    .remark {
       color: #999;
       font-size: 12px;
+      .ellipsis(2);
+    }
+    .r-icon {
+      flex-shrink: 0;
+      margin-left: 20px;
     }
   }
 }
