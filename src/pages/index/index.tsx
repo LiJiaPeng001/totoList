@@ -42,8 +42,9 @@ const Index: React.FC = () => {
   );
   function onsubmit(e: PayloadOption) {
     let date = formatDate(e.date as string, "YYYY-MM-DD");
+    let newData = [];
     if (e.id) {
-      let newData = (auth || []).map((it) => {
+      newData = (auth || []).map((it) => {
         if (it.id === e.id) {
           return {
             ...it,
@@ -54,16 +55,18 @@ const Index: React.FC = () => {
           return it;
         }
       });
-      updateTakeData((auth || []).filter((it) => it.date === currentDate));
-      setAuth(newData);
     } else {
-      let newData = [
-        ...(auth || []),
-        { ...e, date, id: (auth || []).length + 1 },
-      ];
-      updateTakeData(newData.filter((it) => it.date === currentDate));
-      setAuth(newData);
+      newData = [...(auth || []), { ...e, date, id: (auth || []).length + 1 }];
     }
+    updateTakeData(newData.filter((it) => it.date === currentDate));
+    setAuth(newData);
+    updatePayload({
+      id: 0,
+      name: "",
+      status: 1,
+      remark: "",
+      date,
+    });
   }
   function changeModal() {
     updateVisible(!visible);
