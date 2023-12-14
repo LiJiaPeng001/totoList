@@ -34,7 +34,7 @@ const AddModal: React.FC<Props> = (props: Props) => {
   });
   return (
     <>
-      <Modal title="日程" open={visible} footer={null}>
+      <Modal title="日程" open={visible} footer={null} onCancel={() => handleCancel(props)}>
         <Form
           form={form}
           name="basic"

@@ -18,13 +18,17 @@ const badgeMaps: { [K in StatusMaps]: BadgeProps["status"] } = {
 };
 
 function getListData(value: Dayjs, list: PayloadOption[]): PayloadOption[] {
-  return list.filter((it) => it.date == value.format("YYYY-MM-DD"));
+  return list.filter(
+    (it) => it.date == value.format("YYYY-MM-DD") && it.status != 3
+  );
 }
 
 const ToList: React.FC<Props> = (props) => {
   let { list = [] } = props;
   const monthCellRender = (value: Dayjs) => {
-    let newList = list.filter((it) => (it.date as string).indexOf(value.format("YYYY-MM")) > -1)
+    let newList = list.filter(
+      (it) => (it.date as string).indexOf(value.format("YYYY-MM")) > -1
+    );
     let noNum = newList.filter((it) => it.status == 1).length;
     let yesNum = newList.filter((it) => it.status == 2).length;
     let removeNum = newList.filter((it) => it.status == 3).length;
@@ -34,7 +38,7 @@ const ToList: React.FC<Props> = (props) => {
         <section>已完成：{yesNum}</section>
         <section>已删除：{removeNum}</section>
       </div>
-    ) : null
+    ) : null;
   };
 
   const dateCellRender = (value: Dayjs) => {
@@ -54,8 +58,8 @@ const ToList: React.FC<Props> = (props) => {
     if (info.type === "month") return monthCellRender(current);
     return info.originNode;
   };
-  function onSelect(date: Dayjs) {
-    props.select(dayjs(date).format("YYYY-MM-DD"))
+  function onSelect(date: Dayjs, info: { source: 'year' | 'month' | 'date' | 'customize' }) {
+    if (info.source === "date") props.select(dayjs(date).format("YYYY-MM-DD"));
   }
   return <Calendar onSelect={onSelect} cellRender={cellRender} />;
 };
