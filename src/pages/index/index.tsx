@@ -43,7 +43,7 @@ const Index: React.FC = () => {
   function onsubmit(e: PayloadOption) {
     let date = formatDate(e.date as string, "YYYY-MM-DD");
     if (e.id) {
-      let newData = takeData.map((it) => {
+      let newData = (auth || []).map((it) => {
         if (it.id === e.id) {
           return {
             ...it,
@@ -54,11 +54,14 @@ const Index: React.FC = () => {
           return it;
         }
       });
-      updateTakeData(newData);
+      updateTakeData((auth || []).filter((it) => it.date === currentDate));
       setAuth(newData);
     } else {
-      let newData = [...takeData, { ...e, date, id: (auth || []).length + 1 }];
-      updateTakeData(newData);
+      let newData = [
+        ...(auth || []),
+        { ...e, date, id: (auth || []).length + 1 },
+      ];
+      updateTakeData(newData.filter((it) => it.date === currentDate));
       setAuth(newData);
     }
   }
@@ -78,6 +81,7 @@ const Index: React.FC = () => {
   }
   function select(date: string) {
     updateDate(date);
+    updatePayload({ ...payload, date });
     updateTakeData((auth || []).filter((it) => it.date === date));
   }
   return (
