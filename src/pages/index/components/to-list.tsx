@@ -1,8 +1,9 @@
 import type { Dayjs } from "dayjs";
-import type { CalendarProps, BadgeProps } from "antd";
+import type { CalendarProps } from "antd";
 import { Badge, Calendar } from "antd";
 import React, { Key } from "react";
 import { PayloadOption, StatusMaps } from "../types";
+import {badgeMaps} from '../utils'
 import dayjs from "dayjs";
 
 interface Props {
@@ -10,13 +11,6 @@ interface Props {
   date: string;
   select: (date: string) => void;
 }
-
-const badgeMaps: { [K in StatusMaps]: BadgeProps["status"] } = {
-  1: "warning",
-  2: "success",
-  3: "error",
-  4: "success",
-};
 
 function getListData(value: Dayjs, list: PayloadOption[]): PayloadOption[] {
   return list.filter(

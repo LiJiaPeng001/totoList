@@ -17,7 +17,7 @@ function handleCancel(props: Props) {
 const statusMaps: StatusSelectItem[] = [
   { label: "未完成", value: 1 },
   { label: "已完成", value: 2 },
-  { label: "已删除", value: 3 },
+  { label: "进行中", value: 4 },
 ];
 
 const AddModal: React.FC<Props> = (props: Props) => {

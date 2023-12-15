@@ -82,6 +82,13 @@ const Index: React.FC = () => {
     updateTakeData(newData);
     setAuth(newData);
   }
+  function changeStatus(item:PayloadOption){
+    let current = (auth || []).findIndex((it) => it.id == item.id);
+    takeData[current] = item;
+    console.log(takeData,current,item,'current')
+    updateTakeData(takeData);
+    setAuth(takeData);  
+  }
   function select(date: string) {
     updateDate(date);
     updatePayload({ ...payload, date });
@@ -100,6 +107,7 @@ const Index: React.FC = () => {
       <RightContent
         edit={(e: PayloadOption) => edit(e)}
         remove={(e: PayloadOption) => remove(e)}
+        changeStatus={(e: PayloadOption) => changeStatus(e)}
         date={currentDate}
         takeData={takeData}
         open={() => changeModal()}
