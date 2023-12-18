@@ -14,7 +14,7 @@ interface Props {
 
 function getListData(value: Dayjs, list: PayloadOption[]): PayloadOption[] {
   return list.filter(
-    (it) => it.date == value.format("YYYY-MM-DD") && it.status != 3
+    (it) => it.date == value.format("YYYY-MM-DD") && it.status == 1
   );
 }
 
