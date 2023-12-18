@@ -83,11 +83,11 @@ const Index: React.FC = () => {
     setAuth(newData);
   }
   function changeStatus(item:PayloadOption){
-    let current = (auth || []).findIndex((it) => it.id == item.id);
-    takeData[current] = item;
-    console.log(takeData,current,item,'current')
-    updateTakeData(takeData);
-    setAuth(takeData);  
+    let list = auth || []
+    let current = list.findIndex((it) => it.id == item.id);
+    list[current] = item
+    setAuth(list); 
+    updateTakeData(list.filter((it) => it.date === currentDate)); 
   }
   function select(date: string) {
     updateDate(date);
