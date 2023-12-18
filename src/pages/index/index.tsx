@@ -56,7 +56,7 @@ const Index: React.FC = () => {
         }
       });
     } else {
-      newData = [...(auth || []), { ...e, date, id: (auth || []).length + 1 }];
+      newData = [{ ...e, date, id: (auth || []).length + 1 },...(auth || [])];
     }
     updateTakeData(newData.filter((it) => it.date === currentDate));
     setAuth(newData);
