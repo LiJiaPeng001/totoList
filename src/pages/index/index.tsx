@@ -56,7 +56,7 @@ const Index: React.FC = () => {
         }
       });
     } else {
-      newData = [{ ...e, date, id: (auth || []).length + 1 },...(auth || [])];
+      newData = [{ ...e, date, id: (auth || []).length + 1 }, ...(auth || [])];
     }
     updateTakeData(newData.filter((it) => it.date === currentDate));
     setAuth(newData);
@@ -82,12 +82,17 @@ const Index: React.FC = () => {
     updateTakeData(newData);
     setAuth(newData);
   }
-  function changeStatus(item:PayloadOption){
-    let list = auth || []
+  function changeStatus(item: PayloadOption) {
+    let list = auth || [];
     let current = list.findIndex((it) => it.id == item.id);
-    list[current] = item
-    setAuth(list); 
-    updateTakeData(list.filter((it) => it.date === currentDate)); 
+    if (item.status === 4) {
+      list.splice(current, 1);
+      list.unshift(item);
+    } else {
+      list[current] = item;
+    }
+    setAuth(list);
+    updateTakeData(list.filter((it) => it.date === currentDate));
   }
   function select(date: string) {
     updateDate(date);
