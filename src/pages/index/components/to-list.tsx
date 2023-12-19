@@ -44,8 +44,9 @@ const ToList: React.FC<Props> = (props) => {
     return (
       <div className="events">
         {listData.map((item) => (
-          <div key={item.id as Key}>
-            <Badge status={badgeMaps[item.status]} text={item.name} />
+          <div key={item.id as Key} className="e-item middle-flex">
+            <Badge status={badgeMaps[item.status]} />
+            <div className="text">{item.name}</div>
           </div>
         ))}
       </div>
