@@ -76,8 +76,8 @@ const Index: React.FC = () => {
     changeModal();
   }
   function remove(item: PayloadOption) {
-    let current = (auth || []).findIndex((it) => it.id == item.id);
-    let newData = [...takeData];
+    let newData = auth || [];
+    let current = newData.findIndex((it) => it.id == item.id);
     newData[current].status = 3;
     updateTakeData(newData);
     setAuth(newData);
