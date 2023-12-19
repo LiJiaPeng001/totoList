@@ -2,6 +2,7 @@ import React from "react";
 import dayjs from "dayjs";
 import { Button, DatePicker, Form, Input, Modal, Select } from "antd";
 import type { PayloadOption, StatusSelectItem } from "../types";
+import addIcon from '../images/add.webp'
 
 interface Props {
   visible: boolean;
@@ -34,12 +35,13 @@ const AddModal: React.FC<Props> = (props: Props) => {
   });
   return (
     <>
-      <Modal title="日程" open={visible} footer={null} onCancel={() => handleCancel(props)}>
+      <Modal title="日程" open={visible} footer={null} closeIcon={null} onCancel={() => handleCancel(props)}>
+        <img src={addIcon} alt="" className="add-icon" />
         <Form
           form={form}
           name="basic"
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 16 }}
+          labelCol={{ span: 5 }}
+          wrapperCol={{ span: 14 }}
           style={{ marginTop: "50px" }}
           autoComplete="off"
           onFinish={onFinish}

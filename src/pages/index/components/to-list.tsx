@@ -2,7 +2,7 @@ import type { Dayjs } from "dayjs";
 import type { CalendarProps } from "antd";
 import { Badge, Calendar } from "antd";
 import React, { Key } from "react";
-import { PayloadOption, StatusMaps } from "../types";
+import { PayloadOption } from "../types";
 import {badgeMaps} from '../utils'
 import dayjs from "dayjs";
 
