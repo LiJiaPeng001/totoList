@@ -7,6 +7,7 @@ import type { PayloadOption } from "./types";
 // import { auth,setAuth } from '~/utils/authority'
 import { useLocalStorageState } from "ahooks";
 import { formatDate } from "~/utils/date";
+import homeIcon from './images/img2.gif'
 
 import "./index.less";
 
@@ -17,6 +18,9 @@ interface HeadProps {
 function HeadPage(props: HeadProps) {
   return (
     <div className="head-page middle-flex" onClick={props.onClick}>
+      <div className="home-icon">
+        <img src={homeIcon} alt="" className="icon" />
+      </div>
       <Button type="primary">添加日程</Button>
     </div>
   );

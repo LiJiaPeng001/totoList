@@ -110,7 +110,7 @@ const RightList: React.FC<Props> = (props: Props) => {
           <div className="yes-box">
             <Card>
               <div className="title middle-flex">
-                <span>已完成</span>
+                <span>已完成 Finished</span>
                 <div
                   className="icon"
                   style={{ backgroundImage: `url(${endIcon})` }}

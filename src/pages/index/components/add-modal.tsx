@@ -41,8 +41,8 @@ const AddModal: React.FC<Props> = (props: Props) => {
           form={form}
           name="basic"
           labelCol={{ span: 5 }}
-          wrapperCol={{ span: 14 }}
-          style={{ marginTop: "50px" }}
+          wrapperCol={{ span: 15 }}
+          style={{ marginTop: "70px" }}
           autoComplete="off"
           onFinish={onFinish}
         >

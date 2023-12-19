@@ -7,12 +7,22 @@
   overflow: hidden;
 }
 .head-page {
-  justify-content: flex-end;
+  justify-content: space-between;
+  .home-icon{
+    width: 100px;
+    height: 32px;
+    position: relative;
+    .icon{
+      position: absolute;
+      width: 140px;
+      top: -44px;
+    }
+  }
 }
 .blank-page{
   flex-direction: column;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 20px;
   .fish-icon{
     width: 60%;
@@ -22,28 +32,29 @@
   margin-bottom: 20px;
   .title{
     justify-content: space-between;
+    margin-bottom: 15px !important;
   }
   .icon{
-    width: 60px;
-    height: 26px;
+    width: 80px;
+    height: 40px;
     background-position: center;
     background-size: cover;
   }
 }
 .add-icon{
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   position: absolute;
   top: -12px;
-  right: -12px;
+  right: 0px;
 }
 .yes-box{
   .title{
     justify-content: space-between;
   }
   .icon{
-    width: 60px;
-    height: 26px;
+    width: 80px;
+    height: 56px;
     background-position: center;
     background-size: cover;
   }
@@ -66,16 +77,18 @@
   width: 32%;
   .title {
     margin-bottom: 12px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
   }
   .take-item {
     border-bottom: 1px solid #eee;
-    padding: 10px 0;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     align-items: flex-start;
     &:nth-last-child(1) {
       padding-bottom: 0;
       border: none;
+      margin-bottom: 0;
     }
     .status-icon{
       flex-shrink: 0;
