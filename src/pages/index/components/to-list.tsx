@@ -12,12 +12,6 @@ interface Props {
   select: (date: string) => void;
 }
 
-function getListData(value: Dayjs, list: PayloadOption[]): PayloadOption[] {
-  return list.filter(
-    (it) => it.date == value.format("YYYY-MM-DD") && it.status == 1
-  );
-}
-
 const ToList: React.FC<Props> = (props) => {
   let { list = [] } = props;
   const monthCellRender = (value: Dayjs) => {
@@ -40,15 +34,26 @@ const ToList: React.FC<Props> = (props) => {
   };
 
   const dateCellRender = (value: Dayjs) => {
-    const listData = getListData(value, list);
+    const ingList = list.filter(
+      (it) => it.date == value.format("YYYY-MM-DD") && (it.status == 1 || it.status == 4)
+    )
+    const yesList = list.filter(
+      (it) => it.date == value.format("YYYY-MM-DD") && (it.status == 2)
+    )
     return (
       <div className="events">
-        {listData.map((item) => (
+        {ingList.map((item) => (
           <div key={item.id as Key} className="e-item middle-flex">
             <Badge status={badgeMaps[item.status]} />
             <div className="text">{item.name}</div>
           </div>
         ))}
+        {
+          !ingList.length && yesList.length ? <div>已全部完成
+            <span style={{color: '#000',fontWeight:'bold'}}> {yesList.length} </span>
+            个任务
+           </div> : null
+        }
       </div>
     );
   };
