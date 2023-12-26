@@ -17,11 +17,11 @@ interface HeadProps {
 
 function HeadPage(props: HeadProps) {
   return (
-    <div className="head-page middle-flex" onClick={props.onClick}>
+    <div className="head-page middle-flex">
       <div className="home-icon">
         <img src={homeIcon} alt="" className="icon" />
       </div>
-      <Button type="primary">添加日程</Button>
+      <Button onClick={props.onClick} type="primary">添加日程</Button>
     </div>
   );
 }
