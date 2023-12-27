@@ -83,7 +83,7 @@ const Index: React.FC = () => {
     let newData = auth || [];
     let current = newData.findIndex((it) => it.id == item.id);
     newData[current].status = 3;
-    updateTakeData(newData);
+    updateTakeData(newData.filter((it) => it.date === currentDate));
     setAuth(newData);
   }
   function changeStatus(item: PayloadOption) {
