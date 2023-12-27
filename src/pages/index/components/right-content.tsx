@@ -64,7 +64,9 @@ const RightList: React.FC<Props> = (props: Props) => {
             ) : (
               <div className="blank-page center-flex">
                 <img src={blankIcon} className="fish-icon"></img>
-                <div className="text">开摸！</div>
+                <div className="text">
+                  {takeData.length ? "你好棒！完成了所有任务！" : "开摸！"}
+                </div>
               </div>
             )}
             {/* 添加 */}
